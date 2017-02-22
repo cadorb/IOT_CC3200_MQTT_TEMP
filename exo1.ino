@@ -22,13 +22,14 @@
 Adafruit_TMP006 tmp006(0x41);
 
 // Define variables and constants
-char wifi_name[] = "blaiseAPMode";
+char wifi_name[] = "GoldenkAPMode";
 char wifi_password[] = "launchpad";
-char wifi_confFile[] = "wifiConf.txt";
+char wifi_confFile[] = "wifiConf2.txt";
 
 WiFiServer myServer(80);
 uint8_t oldCountClients = 0;
 uint8_t countClients = 0;
+
 
 const int buttonPin = PUSH2;
 int buttonState = 0;
@@ -36,8 +37,11 @@ int buttonState = 0;
 String confString;
 
 
-char hostname[] = "10.3.5.32";
+char hostname[] = "10.3.3.35";
 int port = 1883;
+// const char* topic = "/temperature";
+const char* topicAmbiantTemp = "/temperature/ambiante";
+const char* topicDistantTemp = "/temperature/distante";
 
 char printbuf[100];
 int arrivedcount = 0;
@@ -47,7 +51,8 @@ int cpt_button = 0;
 WifiIPStack ipstack;
 MQTT::Client<WifiIPStack, Countdown> client = MQTT::Client<WifiIPStack, Countdown>(ipstack);
 
-const char* topic = "/julien";
+
+
 
 
 void setup() {

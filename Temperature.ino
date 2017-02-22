@@ -13,8 +13,9 @@ void initTemp() {
 float getTemp() {
     float objt = tmp006.readObjTempC();
     Serial.print("Distance: "); Serial.print(objt); Serial.println("*C");
-    sendMQTTMessage(objt);    float diet = tmp006.readDieTempC();
+    sendMQTTMessage(objt, topicDistantTemp);    
+    float diet = tmp006.readDieTempC();
     Serial.print("Ambiance: "); Serial.print(diet); Serial.println("*C");
-    sendMQTTMessage(diet);
+    sendMQTTMessage(diet, topicAmbiantTemp);
     return diet;
 }

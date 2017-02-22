@@ -28,7 +28,7 @@ void connect() {
 /*********************
 Send Message to MQTT Brocker 
 **********************/
-void sendMQTTMessage(float text_message){
+void sendMQTTMessage(float text_message, const char* topic){
 
     Serial.print("FUNCTION Temperature: "); Serial.print(text_message);
 
@@ -40,7 +40,7 @@ void sendMQTTMessage(float text_message){
 
     // Send and receive QoS 0 message
     char buf[50];
-    sprintf(buf, "%d", (int)text_message);
+    sprintf(buf, "%f", (float)text_message);
     
     //char buf[500];
     //sprintf(buf, "%f", text_message);
